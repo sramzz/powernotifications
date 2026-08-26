@@ -1,0 +1,59 @@
+name: PowerNotifications
+
+options:
+  bundleIdPrefix: com.sramzz
+  deploymentTarget:
+    iOS: "18.0"
+  xcodeVersion: "26.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+    TARGETED_DEVICE_FAMILY: "1"
+
+targets:
+  PowerNotifications:
+    type: application
+    platform: iOS
+    sources:
+      - path: PowerNotifications
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sramzz.powernotifications
+        PRODUCT_NAME: PowerNotifications
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        TARGETED_DEVICE_FAMILY: "1"
+
+  PowerNotificationsTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PowerNotificationsTests
+    dependencies:
+      - target: PowerNotifications
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sramzz.powernotificationsTests
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1"
+
+schemes:
+  PowerNotifications:
+    build:
+      targets:
+        PowerNotifications: all
+        PowerNotificationsTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - PowerNotificationsTests
