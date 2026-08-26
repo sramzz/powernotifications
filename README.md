@@ -1,10 +1,12 @@
 # PowerNotifications
 
-PowerNotifications is an iPhone app for delivering a chosen number of curated
-or self-created notifications throughout the day.
+PowerNotifications is an iPhone app for writing personal prompts and receiving
+them as local notifications throughout your waking hours. The app distributes a
+chosen number of prompts across a wake-to-bed window, then reliably repeats that
+fixed daily pattern until you save a change or reshuffle it.
 
-The current milestone is a minimal SwiftUI application that displays
-“Hello, World!” using a Feature-MVVM structure.
+Everything stays on the device. V1 has no account, backend, analytics, or cloud
+sync.
 
 ## Requirements
 
@@ -39,16 +41,30 @@ while app-wide utilities live under `Core`.
 PowerNotifications/
 ├── App/
 ├── Core/
-│   └── Logging/
+│   ├── Formatting/
+│   ├── Logging/
+│   ├── Notifications/
+│   ├── Preferences/
+│   └── Scheduling/
 ├── Features/
-│   └── Home/
-│       ├── ViewModels/
-│       └── Views/
+│   ├── Onboarding/
+│   ├── Prompts/
+│   ├── Schedule/
+│   └── Settings/
 └── Resources/
 ```
 
-Models should be added inside their owning feature when the feature needs them.
-Avoid adding empty layers in anticipation of future work.
+Prompts use SwiftData. Schedule and onboarding preferences use `UserDefaults`,
+while Apple's pending notification requests are the source of truth for the
+generated pattern. Models stay with their owning feature and system boundaries
+are isolated behind small testable services.
+
+V1 explicitly follows the right-sized project path: TDD, privacy-conscious
+logging, README/spec/plan updates, and Feature-MVVM without the full-path
+database-context or layered-architecture machinery.
+
+The approved behavior is documented in
+[`docs/specs/powernotifications-v1.md`](docs/specs/powernotifications-v1.md).
 
 ## Build and test from the command line
 
