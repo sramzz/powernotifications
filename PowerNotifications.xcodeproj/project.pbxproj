@@ -62,7 +62,7 @@
 		59C901C35B7A44D3F0BD6C0D /* PowerNotificationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerNotificationsApp.swift; sourceTree = "<group>"; };
 		5E5BAFF7FDE617B76E8508B0 /* SchedulePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePreferences.swift; sourceTree = "<group>"; };
 		63027C4475E4C89E1924A932 /* ScheduleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManagerTests.swift; sourceTree = "<group>"; };
-		6667FEFE1579E0153885DC9B /* PowerNotifications.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PowerNotifications.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6667FEFE1579E0153885DC9B /* PowerNotifications.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerNotifications.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51E6A937B67ADFD6AC7617 /* ScheduleGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGeneratorTests.swift; sourceTree = "<group>"; };
 		71A886B34E128370B94B2511 /* PromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModel.swift; sourceTree = "<group>"; };
 		78345AB5F257A73DF9C752C4 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -385,13 +385,6 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		"TEMP_5DBEA408-D2C9-4621-B033-03441F168424" /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -439,8 +432,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 2600;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = B58875250445B67CEBFC38B2 /* Build configuration list for PBXProject "PowerNotifications" */;
 			developmentRegion = en;
@@ -536,6 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = N4BDK3Z362;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -714,6 +706,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = N4BDK3Z362;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

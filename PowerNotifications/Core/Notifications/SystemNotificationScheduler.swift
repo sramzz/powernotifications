@@ -13,7 +13,11 @@ final class SystemNotificationScheduler: NSObject, NotificationScheduling, UNUse
 
     private static let requestPrefix = "powernotifications.slot."
     private let center: UNUserNotificationCenter
-    var onNotificationResponse: ((PromptNotificationPayload) -> Void)?
+    private let responseHandler = NotificationResponseHandler()
+    var onNotificationResponse: ((PromptNotificationPayload) -> Void)? {
+        get { responseHandler.onResponse }
+        set { responseHandler.onResponse = newValue }
+    }
 
     init(center: UNUserNotificationCenter = .current()) {
         self.center = center
@@ -135,26 +139,44 @@ final class SystemNotificationScheduler: NSObject, NotificationScheduling, UNUse
 
     nonisolated func userNotificationCenter(
         _ center: UNUserNotificationCenter,
-        didReceive response: UNNotificationResponse
-    ) async {
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping @Sendable () -> Void
+    ) {
         let userInfo = response.notification.request.content.userInfo
         guard let promptIDString = userInfo[PayloadKey.promptID] as? String,
               let promptID = UUID(uuidString: promptIDString),
               let promptText = userInfo[PayloadKey.promptText] as? String else {
             AppLogger.notifications.error("Ignored notification response with malformed payload")
+            responseHandler.handle(nil, completionHandler: completionHandler)
             return
         }
 
-        await MainActor.run {
-            onNotificationResponse?(
-                PromptNotificationPayload(promptID: promptID, promptText: promptText)
-            )
-        }
+        responseHandler.handle(
+            PromptNotificationPayload(promptID: promptID, promptText: promptText),
+            completionHandler: completionHandler
+        )
     }
 
     private func appOwnedPendingIdentifiers() async -> [String] {
         await center.pendingNotificationRequests()
             .map(\.identifier)
             .filter { $0.hasPrefix(Self.requestPrefix) }
+    }
+}
+
+@MainActor
+final class NotificationResponseHandler {
+    var onResponse: ((PromptNotificationPayload) -> Void)?
+
+    nonisolated func handle(
+        _ payload: PromptNotificationPayload?,
+        completionHandler: @escaping @Sendable () -> Void
+    ) {
+        Task { @MainActor [weak self] in
+            if let payload {
+                self?.onResponse?(payload)
+            }
+            completionHandler()
+        }
     }
 }

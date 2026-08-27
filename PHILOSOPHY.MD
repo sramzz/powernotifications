@@ -60,6 +60,14 @@ How we observe
 
 
 
+How we debug
+
+
+
+* Human-first app reproduction: before an agent operates the app to investigate or verify a bug, ask whether the user can run the check. Capture their exact steps, starting state, expected result, observed result, device, and build. Use agent-driven app testing when the user cannot reproduce it or explicitly delegates the test.
+
+
+
 How we document
 
 
