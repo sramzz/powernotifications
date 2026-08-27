@@ -9,6 +9,8 @@ struct PowerNotificationsApp: App {
     @State private var scheduleManager: ScheduleManager
     @State private var promptViewModel: PromptViewModel
     @State private var onboardingViewModel: OnboardingViewModel
+    @State private var catalogInstaller: PromptCatalogInstaller
+    @State private var promptImportViewModel: PromptImportViewModel
 
     init() {
         let preferences = SchedulePreferences()
@@ -38,12 +40,21 @@ struct PowerNotificationsApp: App {
             modelContext: container.mainContext,
             scheduleManager: scheduleManager
         )
+        let catalogInstaller = PromptCatalogInstaller(
+            preferences: PromptCatalogPreferences(),
+            promptViewModel: promptViewModel
+        )
         _promptViewModel = State(initialValue: promptViewModel)
+        _catalogInstaller = State(initialValue: catalogInstaller)
+        _promptImportViewModel = State(
+            initialValue: PromptImportViewModel(promptViewModel: promptViewModel)
+        )
         _onboardingViewModel = State(
             initialValue: OnboardingViewModel(
                 preferences: preferences,
                 promptViewModel: promptViewModel,
-                scheduleManager: scheduleManager
+                scheduleManager: scheduleManager,
+                catalogInstaller: catalogInstaller
             )
         )
         AppLogger.lifecycle.info("PowerNotifications launched")
@@ -57,6 +68,8 @@ struct PowerNotificationsApp: App {
                 .environment(scheduleManager)
                 .environment(promptViewModel)
                 .environment(onboardingViewModel)
+                .environment(catalogInstaller)
+                .environment(promptImportViewModel)
         }
         .modelContainer(modelContainer)
     }

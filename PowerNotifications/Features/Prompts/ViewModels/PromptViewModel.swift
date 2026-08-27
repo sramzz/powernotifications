@@ -7,10 +7,16 @@ import SwiftData
 final class PromptViewModel {
     private let modelContext: ModelContext
     private let scheduleManager: ScheduleManager
+    private let save: () throws -> Void
 
-    init(modelContext: ModelContext, scheduleManager: ScheduleManager) {
+    init(
+        modelContext: ModelContext,
+        scheduleManager: ScheduleManager,
+        save: (() throws -> Void)? = nil
+    ) {
         self.modelContext = modelContext
         self.scheduleManager = scheduleManager
+        self.save = save ?? { try modelContext.save() }
     }
 
     func snapshots() throws -> [PromptSnapshot] {
@@ -26,6 +32,18 @@ final class PromptViewModel {
         let validated = try PromptTextValidator.validate(text)
         modelContext.insert(Prompt(text: validated))
         try await persistAndRefresh(operation: "created")
+    }
+
+    func createMany(_ drafts: [PromptDraft]) async throws {
+        guard !drafts.isEmpty else { return }
+        let prompts = try drafts.map { draft in
+            Prompt(
+                id: draft.id,
+                text: try PromptTextValidator.validate(draft.text)
+            )
+        }
+        prompts.forEach(modelContext.insert)
+        try await persistAndRefresh(operation: "batch created")
     }
 
     func update(_ prompt: Prompt, text: String) async throws {
@@ -52,7 +70,7 @@ final class PromptViewModel {
     private func persistAndRefresh(operation: String) async throws {
         do {
             let current = try PromptStore.snapshots(in: modelContext)
-            try modelContext.save()
+            try save()
             await scheduleManager.promptsDidChange(current)
             AppLogger.persistence.info("Prompt \(operation, privacy: .public); count: \(current.count)")
         } catch {

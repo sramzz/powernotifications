@@ -27,7 +27,8 @@ struct OnboardingViewModelTests {
         #expect(harness.preferences.onboardingCompleted)
         #expect(harness.preferences.deliveryEnabled)
         #expect(harness.scheduler.scheduledSlots.count == 3)
-        #expect(try harness.context.fetchCount(FetchDescriptor<Prompt>()) == 1)
+        #expect(harness.scheduler.replaceCount == 1)
+        #expect(try harness.context.fetchCount(FetchDescriptor<Prompt>()) == 5)
     }
 
     @Test("A returning user skips prompt creation")
@@ -42,17 +43,23 @@ struct OnboardingViewModelTests {
     private func makeHarness() throws -> OnboardingHarness {
         let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Prompt.self, configurations: configuration)
-        let preferences = SchedulePreferences(defaults: makeDefaults())
+        let defaults = makeDefaults()
+        let preferences = SchedulePreferences(defaults: defaults)
         let scheduler = OnboardingNotificationScheduler()
         let scheduleManager = ScheduleManager(preferences: preferences, scheduler: scheduler)
         let promptViewModel = PromptViewModel(
             modelContext: container.mainContext,
             scheduleManager: scheduleManager
         )
+        let catalogInstaller = PromptCatalogInstaller(
+            preferences: PromptCatalogPreferences(defaults: defaults),
+            promptViewModel: promptViewModel
+        )
         let viewModel = OnboardingViewModel(
             preferences: preferences,
             promptViewModel: promptViewModel,
-            scheduleManager: scheduleManager
+            scheduleManager: scheduleManager,
+            catalogInstaller: catalogInstaller
         )
         return OnboardingHarness(
             container: container,
@@ -83,10 +90,14 @@ private struct OnboardingHarness {
 @MainActor
 private final class OnboardingNotificationScheduler: NotificationScheduling {
     var scheduledSlots: [ScheduledSlot] = []
+    var replaceCount = 0
 
     func authorizationStatus() async -> NotificationAuthorizationState { .authorized }
     func requestAuthorization() async throws {}
-    func replaceSchedule(with slots: [ScheduledSlot]) async throws { scheduledSlots = slots }
+    func replaceSchedule(with slots: [ScheduledSlot]) async throws {
+        replaceCount += 1
+        scheduledSlots = slots
+    }
     func cancelSchedule() async { scheduledSlots = [] }
     func pendingSlots(wakeMinute: Int) async -> [ScheduledSlot] { scheduledSlots }
 }

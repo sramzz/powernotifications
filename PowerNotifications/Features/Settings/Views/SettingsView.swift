@@ -19,6 +19,19 @@ struct SettingsView: View {
                 }
             }
 
+            Section("Data") {
+                NavigationLink {
+                    PromptImportView()
+                } label: {
+                    Label("Import Prompts", systemImage: "square.and.arrow.down")
+                }
+                NavigationLink {
+                    PromptImportFormatView()
+                } label: {
+                    Label("JSON Format", systemImage: "curlybraces")
+                }
+            }
+
             Section("About") {
                 Text("PowerNotifications delivers your own prompts throughout your waking hours. Your prompts stay on this device.")
                 LabeledContent("Version", value: appVersion)

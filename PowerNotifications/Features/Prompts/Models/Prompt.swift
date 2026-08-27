@@ -1,6 +1,16 @@
 import Foundation
 import SwiftData
 
+struct PromptDraft: Equatable, Sendable {
+    let id: UUID
+    let text: String
+
+    init(id: UUID = UUID(), text: String) {
+        self.id = id
+        self.text = text
+    }
+}
+
 @Model
 final class Prompt {
     @Attribute(.unique) var id: UUID

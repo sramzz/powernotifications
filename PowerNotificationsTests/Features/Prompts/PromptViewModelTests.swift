@@ -30,7 +30,60 @@ struct PromptViewModelTests {
         #expect(harness.scheduler.scheduledSlots.isEmpty)
     }
 
-    private func makeHarness(deliveryEnabled: Bool) throws -> PromptHarness {
+    @Test("A prompt batch preserves IDs and duplicate text while refreshing once")
+    func createsBatchAndRefreshesOnce() async throws {
+        let harness = try makeHarness(deliveryEnabled: true)
+        let firstID = UUID()
+        let secondID = UUID()
+
+        try await harness.viewModel.createMany([
+            PromptDraft(id: firstID, text: "  Breathe  "),
+            PromptDraft(id: secondID, text: "Breathe")
+        ])
+
+        #expect(try harness.viewModel.snapshots() == [
+            PromptSnapshot(id: firstID, text: "Breathe"),
+            PromptSnapshot(id: secondID, text: "Breathe")
+        ])
+        #expect(harness.scheduler.replaceCount == 1)
+    }
+
+    @Test("A batch validates fully before inserting anything")
+    func rejectsWholeInvalidBatch() async throws {
+        let harness = try makeHarness(deliveryEnabled: true)
+
+        await #expect(throws: PromptValidationError.empty) {
+            try await harness.viewModel.createMany([
+                PromptDraft(text: "Valid"),
+                PromptDraft(text: "  ")
+            ])
+        }
+
+        #expect(try harness.context.fetchCount(FetchDescriptor<Prompt>()) == 0)
+        #expect(harness.scheduler.replaceCount == 0)
+    }
+
+    @Test("A failed batch save is attempted once and rolled back")
+    func rollsBackFailedBatchSave() async throws {
+        let saveSpy = SaveSpy()
+        let harness = try makeHarness(deliveryEnabled: true) {
+            saveSpy.callCount += 1
+            throw TestSaveError.failed
+        }
+
+        await #expect(throws: TestSaveError.failed) {
+            try await harness.viewModel.createMany([PromptDraft(text: "Valid")])
+        }
+
+        #expect(saveSpy.callCount == 1)
+        #expect(try harness.context.fetchCount(FetchDescriptor<Prompt>()) == 0)
+        #expect(harness.scheduler.replaceCount == 0)
+    }
+
+    private func makeHarness(
+        deliveryEnabled: Bool,
+        save: (() throws -> Void)? = nil
+    ) throws -> PromptHarness {
         let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Prompt.self, configurations: configuration)
         let preferences = SchedulePreferences(defaults: makeDefaults())
@@ -39,7 +92,8 @@ struct PromptViewModelTests {
         let manager = ScheduleManager(preferences: preferences, scheduler: scheduler)
         let viewModel = PromptViewModel(
             modelContext: container.mainContext,
-            scheduleManager: manager
+            scheduleManager: manager,
+            save: save
         )
         return PromptHarness(
             container: container,
@@ -58,6 +112,15 @@ struct PromptViewModelTests {
 }
 
 @MainActor
+private final class SaveSpy {
+    var callCount = 0
+}
+
+private enum TestSaveError: Error {
+    case failed
+}
+
+@MainActor
 private struct PromptHarness {
     let container: ModelContainer
     let context: ModelContext
@@ -68,10 +131,14 @@ private struct PromptHarness {
 @MainActor
 private final class PromptViewModelNotificationScheduler: NotificationScheduling {
     var scheduledSlots: [ScheduledSlot] = []
+    var replaceCount = 0
 
     func authorizationStatus() async -> NotificationAuthorizationState { .authorized }
     func requestAuthorization() async throws {}
-    func replaceSchedule(with slots: [ScheduledSlot]) async throws { scheduledSlots = slots }
+    func replaceSchedule(with slots: [ScheduledSlot]) async throws {
+        replaceCount += 1
+        scheduledSlots = slots
+    }
     func cancelSchedule() async { scheduledSlots = [] }
     func pendingSlots(wakeMinute: Int) async -> [ScheduledSlot] { scheduledSlots }
 }

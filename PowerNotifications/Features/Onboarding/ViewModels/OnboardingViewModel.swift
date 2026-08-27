@@ -7,6 +7,7 @@ final class OnboardingViewModel {
     private let preferences: SchedulePreferences
     private let promptViewModel: PromptViewModel
     private let scheduleManager: ScheduleManager
+    private let catalogInstaller: PromptCatalogInstaller
 
     var step: OnboardingStep = .welcome
     var promptText = ""
@@ -20,11 +21,13 @@ final class OnboardingViewModel {
     init(
         preferences: SchedulePreferences,
         promptViewModel: PromptViewModel,
-        scheduleManager: ScheduleManager
+        scheduleManager: ScheduleManager,
+        catalogInstaller: PromptCatalogInstaller
     ) {
         self.preferences = preferences
         self.promptViewModel = promptViewModel
         self.scheduleManager = scheduleManager
+        self.catalogInstaller = catalogInstaller
     }
 
     var scheduleIsValid: Bool {
@@ -59,12 +62,19 @@ final class OnboardingViewModel {
         errorMessage = nil
         defer { isWorking = false }
 
+        do {
+            try await catalogInstaller.installIfNeeded()
+        } catch {
+            errorMessage = "Starter prompts could not be added. Please retry."
+            AppLogger.lifecycle.error("Onboarding catalog installation failed: \(error.localizedDescription, privacy: .public)")
+            return
+        }
+
         let snapshots: [PromptSnapshot]
         do {
             snapshots = try promptViewModel.snapshots()
         } catch {
             errorMessage = "Your prompts could not be loaded. Please retry."
-            AppLogger.lifecycle.error("Onboarding could not load prompts: \(error.localizedDescription, privacy: .public)")
             return
         }
 

@@ -8,6 +8,26 @@ fixed daily pattern until you save a change or reshuffle it.
 Everything stays on the device. V1 has no account, backend, analytics, or cloud
 sync.
 
+## Adding many prompts
+
+Settings → Data → Import Prompts accepts a local JSON file, previews valid and
+skipped entries, and asks for confirmation before saving. The supported format is:
+
+```json
+{
+  "schemaVersion": 1,
+  "name": "Morning prompts",
+  "prompts": [
+    { "text": "What deserves my attention today?" },
+    { "text": "Take three slow breaths." }
+  ]
+}
+```
+
+The app also maintains a versioned Swift starter catalog. It inserts four editable
+starter prompts through `ModelContext` once per catalog version. Direct SQL edits
+are unsupported because SwiftData owns its storage format and lifecycle.
+
 ## Requirements
 
 - Xcode 26.5 or newer
@@ -64,7 +84,9 @@ logging, README/spec/plan updates, and Feature-MVVM without the full-path
 database-context or layered-architecture machinery.
 
 The approved behavior is documented in
-[`docs/specs/powernotifications-v1.md`](docs/specs/powernotifications-v1.md).
+[`docs/specs/powernotifications-v1.md`](docs/specs/powernotifications-v1.md) and
+the additive
+[`docs/specs/prompt-import-and-seeding-v1.1.md`](docs/specs/prompt-import-and-seeding-v1.1.md).
 
 ## Build and test from the command line
 

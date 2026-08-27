@@ -20,6 +20,7 @@ targets:
       - path: PowerNotifications
     settings:
       base:
+        DEVELOPMENT_TEAM: N4BDK3Z362
         PRODUCT_BUNDLE_IDENTIFIER: com.sramzz.powernotifications
         PRODUCT_NAME: PowerNotifications
         GENERATE_INFOPLIST_FILE: YES

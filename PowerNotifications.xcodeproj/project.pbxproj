@@ -10,11 +10,15 @@
 		14D74AEE2032B9F84A6CCA4B /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6B35B4D17D170BF4469B63 /* AppLogger.swift */; };
 		1E7B2B154D8E7C8193A6D238 /* PromptListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CCCAECC7D179166D10CC6B /* PromptListView.swift */; };
 		2201161DF7987835AAC58258 /* ScheduleControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE411B97EE13AD63AD2798B9 /* ScheduleControls.swift */; };
+		225B04DDD0FC80189A4C5AEB /* PromptImportViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727E6C91E9229D3CCD1BEAD9 /* PromptImportViewModelTests.swift */; };
 		2CAB21C278E372B52E0AD59C /* ScheduleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1953DE038F3844E2D9D2D6F /* ScheduleGenerator.swift */; };
 		2D2B1E094BDC2CE406BD12CC /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3079CD550D4BA6883A22330 /* OnboardingViewModel.swift */; };
+		2DFB6B760F3744D1635D5457 /* PromptCatalogInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4A3FF93B693B2AC8BFDDC /* PromptCatalogInstaller.swift */; };
 		2FDB7DAC37B58493180745E6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38758D83F001F8FF8E05282 /* MainTabView.swift */; };
 		388D2AF15CEDA61FD5197807 /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7D0B2682B523EBFE053327 /* ScheduleManager.swift */; };
 		3CD1120901A751C4CCA55949 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C58398BE219A0AED6D2974 /* OnboardingViewModelTests.swift */; };
+		3FDF6A2DE55D851B7632D4CC /* PromptCatalogPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE22AADBA56E9E906EDCF42 /* PromptCatalogPreferences.swift */; };
+		421FB76CCD50A7E2D91D740D /* PromptImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68EEA40059C34CBACE38601 /* PromptImportView.swift */; };
 		45188218C310E36E5432A9CD /* PromptDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46424EFE177E81F466EE589F /* PromptDetailView.swift */; };
 		4B2FCBF0D7B3910907976297 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429822BFCD0473A89621BB6 /* ScheduleView.swift */; };
 		54C073F985BF3F78BA753A19 /* ScheduleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027C4475E4C89E1924A932 /* ScheduleManagerTests.swift */; };
@@ -23,11 +27,15 @@
 		7BA5C0DC8882891B8FD3F389 /* PromptTextValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD88E1028C12CCC085B5AB /* PromptTextValidatorTests.swift */; };
 		7D3B1FBCA813C146B22C4BB1 /* SchedulePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BAFF7FDE617B76E8508B0 /* SchedulePreferences.swift */; };
 		84B2E1239203E42D37D136DA /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7976C55D3783697F86C9F /* TimeOfDay.swift */; };
+		87FD56C3C94F19A1CA933AE5 /* BuiltInPromptCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073A44AF43619FFB0ECD30A8 /* BuiltInPromptCatalog.swift */; };
 		8F409241C9EDFEE598EDF96A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18374C660A9F893F7578A1CE /* Assets.xcassets */; };
 		971C7F44AC13D078F0E6B5F7 /* PromptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5AD78375A5D64C7264E92D /* PromptStore.swift */; };
+		A77D33AABF5860A444EF1A3A /* PromptImportParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B34136A92E870F4493F696E /* PromptImportParserTests.swift */; };
 		B4E9E988876CF6AF3A25C018 /* ScheduleGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51E6A937B67ADFD6AC7617 /* ScheduleGeneratorTests.swift */; };
+		B77A2423243D69A12750682A /* BuiltInPromptCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63468550F0EE0C1BAC8A5249 /* BuiltInPromptCatalogTests.swift */; };
 		C68BA74B80EE85D78872BC3A /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF6CAB3488B557A8E2EA8CC /* Prompt.swift */; };
 		CB16863C74E046C1E52C7E09 /* PromptTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E028B05C585C1BD9BECBA399 /* PromptTextValidator.swift */; };
+		D30511F17C79AF81377EC5DE /* PromptImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD63ABF5BD08D87A45903F /* PromptImport.swift */; };
 		D3E5086C6E440A46F28A089E /* NotificationScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CB9F5F960E932B429F64A /* NotificationScheduling.swift */; };
 		D54C66784ED18B343DED250E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA90841032A0781481398443 /* AppRouter.swift */; };
 		D7B76F662FEA4DE8EFABE8E6 /* PromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A886B34E128370B94B2511 /* PromptViewModel.swift */; };
@@ -38,6 +46,7 @@
 		E6603E4AC166C5538F43BD83 /* PromptPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92172393C1517DD2C349758 /* PromptPersistenceTests.swift */; };
 		E979EA6E4B4437E9B456CA93 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE227685AAF5610A35EB66C /* SettingsView.swift */; };
 		F4F0CE8A3287EB76D2ADE18F /* SchedulePreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79503A1354AD568BAC95B4C2 /* SchedulePreferencesTests.swift */; };
+		F8269CF098A91EBB3A8078D7 /* PromptImportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4A0742EE19A5AB9CD526CC /* PromptImportViewModel.swift */; };
 		FB41D61582419DC86AA94BDF /* PowerNotificationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C901C35B7A44D3F0BD6C0D /* PowerNotificationsApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,21 +61,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02AD63ABF5BD08D87A45903F /* PromptImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptImport.swift; sourceTree = "<group>"; };
+		073A44AF43619FFB0ECD30A8 /* BuiltInPromptCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInPromptCatalog.swift; sourceTree = "<group>"; };
 		12CCCAECC7D179166D10CC6B /* PromptListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptListView.swift; sourceTree = "<group>"; };
 		14C58398BE219A0AED6D2974 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		18374C660A9F893F7578A1CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		293652AB8E37725CBDEE8224 /* SystemNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemNotificationScheduler.swift; sourceTree = "<group>"; };
+		2B34136A92E870F4493F696E /* PromptImportParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptImportParserTests.swift; sourceTree = "<group>"; };
+		3DA4A3FF93B693B2AC8BFDDC /* PromptCatalogInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCatalogInstaller.swift; sourceTree = "<group>"; };
 		3ED829729F58D8CED62009DB /* PromptViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModelTests.swift; sourceTree = "<group>"; };
 		46424EFE177E81F466EE589F /* PromptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDetailView.swift; sourceTree = "<group>"; };
 		58A7976C55D3783697F86C9F /* TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		59C901C35B7A44D3F0BD6C0D /* PowerNotificationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerNotificationsApp.swift; sourceTree = "<group>"; };
 		5E5BAFF7FDE617B76E8508B0 /* SchedulePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePreferences.swift; sourceTree = "<group>"; };
 		63027C4475E4C89E1924A932 /* ScheduleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManagerTests.swift; sourceTree = "<group>"; };
-		6667FEFE1579E0153885DC9B /* PowerNotifications.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerNotifications.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63468550F0EE0C1BAC8A5249 /* BuiltInPromptCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInPromptCatalogTests.swift; sourceTree = "<group>"; };
+		6667FEFE1579E0153885DC9B /* PowerNotifications.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PowerNotifications.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51E6A937B67ADFD6AC7617 /* ScheduleGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGeneratorTests.swift; sourceTree = "<group>"; };
 		71A886B34E128370B94B2511 /* PromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModel.swift; sourceTree = "<group>"; };
+		727E6C91E9229D3CCD1BEAD9 /* PromptImportViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptImportViewModelTests.swift; sourceTree = "<group>"; };
 		78345AB5F257A73DF9C752C4 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		79503A1354AD568BAC95B4C2 /* SchedulePreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePreferencesTests.swift; sourceTree = "<group>"; };
+		7D4A0742EE19A5AB9CD526CC /* PromptImportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptImportViewModel.swift; sourceTree = "<group>"; };
 		7F6B35B4D17D170BF4469B63 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		9429822BFCD0473A89621BB6 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		B38758D83F001F8FF8E05282 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -78,7 +94,9 @@
 		C79750DAEA556E19D8548D62 /* AppRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterTests.swift; sourceTree = "<group>"; };
 		C92172393C1517DD2C349758 /* PromptPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPersistenceTests.swift; sourceTree = "<group>"; };
 		C9DADA82CC10E673865C2C0F /* PowerNotificationsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PowerNotificationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D68EEA40059C34CBACE38601 /* PromptImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptImportView.swift; sourceTree = "<group>"; };
 		DB7D0B2682B523EBFE053327 /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
+		DBE22AADBA56E9E906EDCF42 /* PromptCatalogPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCatalogPreferences.swift; sourceTree = "<group>"; };
 		DDB5ED20E9198322014611AF /* PromptEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptEditorView.swift; sourceTree = "<group>"; };
 		E028B05C585C1BD9BECBA399 /* PromptTextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTextValidator.swift; sourceTree = "<group>"; };
 		EA90841032A0781481398443 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
@@ -110,7 +128,9 @@
 		21665A318B2C1DA6976DFA84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				073A44AF43619FFB0ECD30A8 /* BuiltInPromptCatalog.swift */,
 				ECF6CAB3488B557A8E2EA8CC /* Prompt.swift */,
+				02AD63ABF5BD08D87A45903F /* PromptImport.swift */,
 				BE5AD78375A5D64C7264E92D /* PromptStore.swift */,
 				E028B05C585C1BD9BECBA399 /* PromptTextValidator.swift */,
 			);
@@ -163,6 +183,7 @@
 			children = (
 				46424EFE177E81F466EE589F /* PromptDetailView.swift */,
 				DDB5ED20E9198322014611AF /* PromptEditorView.swift */,
+				D68EEA40059C34CBACE38601 /* PromptImportView.swift */,
 				12CCCAECC7D179166D10CC6B /* PromptListView.swift */,
 			);
 			path = Views;
@@ -231,6 +252,8 @@
 		752D8C3F6B2905C240B9E65A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3DA4A3FF93B693B2AC8BFDDC /* PromptCatalogInstaller.swift */,
+				7D4A0742EE19A5AB9CD526CC /* PromptImportViewModel.swift */,
 				71A886B34E128370B94B2511 /* PromptViewModel.swift */,
 			);
 			path = ViewModels;
@@ -256,6 +279,9 @@
 		8AA9171FF27C52AA29884984 /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				63468550F0EE0C1BAC8A5249 /* BuiltInPromptCatalogTests.swift */,
+				2B34136A92E870F4493F696E /* PromptImportParserTests.swift */,
+				727E6C91E9229D3CCD1BEAD9 /* PromptImportViewModelTests.swift */,
 				C92172393C1517DD2C349758 /* PromptPersistenceTests.swift */,
 				C4AD88E1028C12CCC085B5AB /* PromptTextValidatorTests.swift */,
 				3ED829729F58D8CED62009DB /* PromptViewModelTests.swift */,
@@ -266,6 +292,7 @@
 		8B598D0950C402731C74A156 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				DBE22AADBA56E9E906EDCF42 /* PromptCatalogPreferences.swift */,
 				5E5BAFF7FDE617B76E8508B0 /* SchedulePreferences.swift */,
 			);
 			path = Preferences;
@@ -432,6 +459,11 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					CFAFBD7F2C917E2F81DF0528 = {
+						DevelopmentTeam = N4BDK3Z362;
+					};
+				};
 			};
 			buildConfigurationList = B58875250445B67CEBFC38B2 /* Build configuration list for PBXProject "PowerNotifications" */;
 			developmentRegion = en;
@@ -471,14 +503,20 @@
 			files = (
 				14D74AEE2032B9F84A6CCA4B /* AppLogger.swift in Sources */,
 				D54C66784ED18B343DED250E /* AppRouter.swift in Sources */,
+				87FD56C3C94F19A1CA933AE5 /* BuiltInPromptCatalog.swift in Sources */,
 				2FDB7DAC37B58493180745E6 /* MainTabView.swift in Sources */,
 				D3E5086C6E440A46F28A089E /* NotificationScheduling.swift in Sources */,
 				E4CE48976087707840DDD636 /* OnboardingView.swift in Sources */,
 				2D2B1E094BDC2CE406BD12CC /* OnboardingViewModel.swift in Sources */,
 				FB41D61582419DC86AA94BDF /* PowerNotificationsApp.swift in Sources */,
 				C68BA74B80EE85D78872BC3A /* Prompt.swift in Sources */,
+				2DFB6B760F3744D1635D5457 /* PromptCatalogInstaller.swift in Sources */,
+				3FDF6A2DE55D851B7632D4CC /* PromptCatalogPreferences.swift in Sources */,
 				45188218C310E36E5432A9CD /* PromptDetailView.swift in Sources */,
 				DA4D14813E787D059E69B2A3 /* PromptEditorView.swift in Sources */,
+				D30511F17C79AF81377EC5DE /* PromptImport.swift in Sources */,
+				421FB76CCD50A7E2D91D740D /* PromptImportView.swift in Sources */,
+				F8269CF098A91EBB3A8078D7 /* PromptImportViewModel.swift in Sources */,
 				1E7B2B154D8E7C8193A6D238 /* PromptListView.swift in Sources */,
 				971C7F44AC13D078F0E6B5F7 /* PromptStore.swift in Sources */,
 				CB16863C74E046C1E52C7E09 /* PromptTextValidator.swift in Sources */,
@@ -500,7 +538,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC9F529E0B82E2CC8BF9E5C /* AppRouterTests.swift in Sources */,
+				B77A2423243D69A12750682A /* BuiltInPromptCatalogTests.swift in Sources */,
 				3CD1120901A751C4CCA55949 /* OnboardingViewModelTests.swift in Sources */,
+				A77D33AABF5860A444EF1A3A /* PromptImportParserTests.swift in Sources */,
+				225B04DDD0FC80189A4C5AEB /* PromptImportViewModelTests.swift in Sources */,
 				E6603E4AC166C5538F43BD83 /* PromptPersistenceTests.swift in Sources */,
 				7BA5C0DC8882891B8FD3F389 /* PromptTextValidatorTests.swift in Sources */,
 				714A3E42DE8652451700110D /* PromptViewModelTests.swift in Sources */,
