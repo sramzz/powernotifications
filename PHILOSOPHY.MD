@@ -24,13 +24,13 @@ How we think
 
 * We will not apply rocket science to a a simple project, that is using a chainsaw to slice a piece of cake.
 
-* Pragmatic but informed: we consult engineering experts and watch industry standards without chasing every trend. If the new trend is a clear winner for a specific project, we will pursue it.
+* Pragmatic but informed: we consult data engineering experts and watch industry standards without chasing every trend. If the new trend is a clear winner for a specific project, we will pursue it.
 
 
 
 How we code
 
-
+* Prefer simple design avoiding unnecessary bureaucracy, but ask when it feels unavoidable
 
 * TDD with intent: tests are written first, deliberately, well thought behind. They encode what the code is for, not just that it runs. TDD is our default — only throwaway exploration is exempt, and AI makes full TDD viable everywhere else.
 
@@ -46,6 +46,8 @@ How we code
 
 * Idempotency: is crucial when syncing and versioning features are involved.
 
+* Finite State Machines: model complex FE and BE flows with explicit states and transitions when appropriate — eliminating impossible states, preventing race conditions, and reinforcing idempotency.
+
 
 
 
@@ -57,14 +59,6 @@ How we observe
 * Logging is non-negotiable. A junior dev with zero project context should be able to follow the project from logs alone.
 
 * We have a exposed Logs folder where we can share the logs to the dev env. Depending on the project, we will have more or less sophistication for this approach.
-
-
-
-How we debug
-
-
-
-* Human-first app reproduction: before an agent operates the app to investigate or verify a bug, ask whether the user can run the check. Capture their exact steps, starting state, expected result, observed result, device, and build. Use agent-driven app testing when the user cannot reproduce it or explicitly delegates the test.
 
 
 
@@ -111,4 +105,3 @@ How we deliver
 4. Plan — derived from specs, saved as MarkDown, saved in a folder with all plans in the project. We have a Beads also that carries the plan.
 
 5. Build.
-
